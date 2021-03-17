@@ -1,0 +1,153 @@
+\documentclass[9pt]{beamer}
+\usetheme{Warsaw}
+
+\input{preambule-beamer}
+\author{Sami AS}
+\title{Séries de Fourier : résumé}
+\newcommand\serie{\sum_{k=0} ^\infty}
+\newcommand\serieak{\sum_{k=0} ^\infty a_k \varphi_k}
+\newcommand\serieck{\sum_{k=0} ^\infty c_k \varphi_k}
+\newcommand\serienck{\sum_{k=0} ^n c_k \varphi_k}
+\newcommand\serien{\sum_{k=0} ^n}
+\newcommand\series{\sum_{k=1} ^\infty}
+\newcommand\carrab{L^2([a,b], \mathbb{K})}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+\section{Objectif}
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+\begin{frame}{Objectif(s) du chapitre}
+\begin{itemize}
+\item Approximer une fonction $C^1$ globalement sur un intervalle $I$.
+\item Si l'on considère un espace \textbf{orthogonal} de fonctions $\Phi = \{\varphi_k ; k\in \mathbb{N}\}$, on peut écrire le développement de $f$ selon l'espace $\Phi$. C'est la projection de $f$ sur $\Phi$ : 
+$$f(x) \sim \bleu{\sum_{k=0} ^\infty c_k(f) \varphi_k(x):= S(x)} \quad \rouge{\forall x \in I} \quad  .$$
+
+\item On veut trouver un tel système de fonction \textit{efficace}, i.e. qui minimise l'écart entre $f$ et son développement en série.
+\item La série \bleu{$S(x)$} converge-t-elle ? Si oui, converge-t-elle vers $f(x)$ ?
+\end{itemize}
+\end{frame}
+
+\section{Outils}
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+\subsection{Espace $L^2$ et norme $\| \cdot \| _2$}
+\begin{frame}{Espace et norme}
+\begin{block}{Espace $L^2([a,b], \mathbb{K})$}
+L'espace des fonctions de carré sommable/intégrable. L'appartenance à cette classe s'observe par la convergence de l'intégrale.
+$$ f \in L^2([a,b], \mathbb{K}) \iff \sqrt{\int_b ^a |f|^2} < +\infty $$
+\textit{L'espace $C^0$ est trop petit pour nos besoins.}
+\end{block}
+\begin{block}{Produit scalaire, norme}
+\begin{itemize}
+\item $\langle f, g \rangle := \int_a ^b f  g^*$
+\item $\|f\|_2 ^2 \ : = \int_b ^a |f|^2 $
+\end{itemize}
+\end{block}
+\end{frame}
+\subsection{Série de Fourier d'une fonction}
+\begin{frame}{Construire une série de Fourier pour une fonction}
+\begin{block}{Série de Fourier}
+\begin{itemize}
+\item Les \textbf{coefficients de Fourier} de $f$ relativement à $\Phi = \{\varphi_k\}_{k\geq 0}$,  $c_k$, sont les scalaires $$c_k = \dfrac{\langle f, \varphi_k \rangle}{\|\varphi \| ^2}.$$
+\item Propriété : la \rouge{série} qui effectue la meilleure approximation en \textbf{moyenne quadratique} de $f$ dans vect$\{\varphi_1, ... \varphi_n\}$ est celle où $a_k = c_k$ pour tous les $k$.
+$$\left\| f-\rouge{\serien a_k \varphi_k} \right\|_2 \text{min} \iff a_k = c_k \forall k =1, ..., n$$
+\item La série de Fourier de $f$ relativement à $\Phi = \{\varphi_k\}_{k\geq 0}$ est $$\bleu{S(x)}  :=\serie c_k(f) \varphi_k(x) .$$
+
+\end{itemize}
+
+\end{block}
+\end{frame}
+\begin{frame}{Interprétation}
+\begin{itemize}
+\item $\Phi = \{\varphi_k\}_{k\geq 0}$ est un espace de fonctions.
+\item Développer $f$ sur l'espace $\Phi$ revient à projeter $f$ sur chaque "axe" de l'espace, donc sur chaque sous-espace vect$\{\varphi_k\}$. 
+\item La projection de $f$ sur $\varphi_k$ est très efficace (minimise la norme $L^2$ de l'écart) si elle est \textbf{orthogonale}, autrement dit si $$\text{proj}_{\varphi_k} f = \varphi_k \cdot \green{\dfrac{\langle f, \varphi_k \rangle}{\|\varphi \| ^2}},$$ où $\green{c_k}$ est le \green{coefficient de Fourier de $f$ relativement à $\varphi_k$}.
+\item La projection de $f$ sur un \bleu{espace engendré par les $\varphi_k := \Phi$} est la somme des projections de $f$ sur chacun des axes de $\Phi$. 
+\item Comme chaque projection est orthogonale, on comprend aisément que la meilleure approximation en \textbf{moyenne quadratique} de $f$ sur $\Phi$ est la série suivante : $$\serien c_k \varphi_k. \qquad \text{Série de Fourier : } \quad \serie c_k \varphi_k$$
+\end{itemize}
+\end{frame}
+\begin{frame}{Systèmes complets classiques}
+Voici des systèmes complets dans l'espace $L^2([0,L], \mathbb{R})$
+\begin{itemize}
+	\item Système trigonométriques classiques :
+		\begin{enumerate}
+		\item $\Phi = \left\{\dfrac{1}{2}, \cos\left(\dfrac{2k			\pi}{L} x\right),\sin\left(\dfrac{2k\pi}{L} x\right) 			\quad ; \quad  k \in \mathbb{N}_0  \right\} $
+		\item $\Phi = \left\{ \sin\left(\dfrac{2k\pi}{L} x\right) \quad ; \quad k \in \mathbb{N}_ 0 \right\}$
+		\item $\Phi = \left\{ \cos\left(\dfrac{2k\pi}{L} x\right) \quad ; \quad k \in \mathbb{N}_0 \right\}$
+		\end{enumerate}
+	\item blabla
+\end{itemize}
+\end{frame}
+\section{Convergence de la série de Fourier}
+\begin{frame}
+\tableofcontents[currentsection]
+\end{frame}
+\subsection{Types de convergence}
+\begin{frame}{Convergences dans $L^2([a,b], \mathbb{K})$ dans l'ordre de puissance}
+\begin{enumerate}
+\item Convergence simple : 
+$$ \serieak \stackrel{C.S}{=} f \ \  \rouge{\forall x \in [a,b]} \iff \left| \serienck - f \right| \stackrel{\small n\rightarrow \infty}{\longrightarrow} 0$$ 
+
+\item Convergence en norme $L^2$ :
+$$ \serieak \stackrel{L^2}{=} f \ \  \rouge{\forall x \in [a,b]} \iff  \lim_{n\rightarrow +\infty} \left\| f - \serienck \right\| _2 \longrightarrow 0$$
+
+\item Convergence uniforme :
+$$\serieak \stackrel{C.U}{=} f \ \  \rouge{\forall x \in [a,b]} \iff \sup_{x\in [a,b]}  \left| \serienck - f \right| \stackrel{\small n\rightarrow \infty}{\longrightarrow} 0 $$
+\end{enumerate}
+Attention, CU implique les deux autres, \textbf{et c'est tout} !
+\end{frame}
+\subsection{Théorèmes}
+\begin{frame}{Convergence en norme $L^2$ vers $f$ : Parseval}
+On considère $\Phi$ un système orthogonal, $f \in \carrab$.
+\begin{block}{Inégalité de Bessel}
+= Limite de l'inégalité de Pythagore.
+\begin{center}\boxmath{\serie |c_k|^2 \|\varphi_k \|_2 ^2 \leq \|f\|_2 ^2}
+\end{center}
+\end{block}
+\begin{block}{Théorème de Parseval}
+Si $\Phi$ est un système orthogonal \textbf{\green{complet}}, i.e. que \green{toute fonction $f$ a sa série de Fourier qui converge en moyenne quadratique vers elle}, alors l'inégalité de Bessel devient égalité.
+$$ \green{\serieck \stackrel{L^2}{=} f}  \Longrightarrow  \ \boxed{\serie |c_k|^2 \|\varphi_k \|_2 ^2 = \|f\|_2 ^2}$$
+\end{block}
+\end{frame}
+\subsection{Dirichlet}
+\begin{frame}{Convergence simple vers la régularisée : Dirichlet}
+La régularisée $\tilde{f}$ de $f$ est une fonction similaire à $f$ sauf qu'elle prend des valeurs différentes aux extrémités de l'intervalle $[a,b]$. Si $f(a) = f(b)$ alors la régularisée est continue, et $\tilde{f} = f$.
+\begin{block}{Théorème de Dirichlet}
+Si $f\in C^1 _{\text{morc}} ([a,b])$, alors sa série de Fourier \textbf{converge simplement} vers la régularisée de $f$ sur $I$. Si on étend jusqu'à $\mathbb{R}$, la série converge simplement vers le prolongement périodique de la régularisée de $f$. 
+\end{block}
+Attention, si $f(a) \neq f(b)$ la régularisée n'est pas continue. Donc si le développement de Fourier (série de fonctions continues) converge simplement vers quelque chose qui n'est pas continu sur l'intervalle, \textbf{on déduit qu'il n'y a pas de convergence uniforme} : c'est le phénomène de Gibbs.
+\end{frame}
+\subsection{C.U}
+\begin{frame}{Convergence uniforme vers $f$}
+La convergence uniforme s'obtient en adaptant le théorème de Dirichlet. En effet, si les hypothèses de Dirichlet sont vérifiées, alors on a $S(x) \stackrel{C.S}{=} \tilde{f}(x)$ en tout point de l'intervalle. De plus, si la régularisée est continue, alors on a une série de fonctions continues (les $\varphi_k$) qui converge vers une fonction continue : c'est une propriété de la convergence uniforme.
+\begin{block}{Convergence uniforme vers $f$}
+Si 
+\begin{itemize}
+\item $f\in C^1 _{\text{morc}}([a,b])$
+\item $f\in C^0([a,b])$
+\item $f(a)=f(b)$
+\end{itemize}
+Alors $S(x) \stackrel{C.U}{=}f(x)$ en tout point de l'intervalle $I = [a,b]$.
+\end{block}
+\end{frame}
+\section{Résumé}
+\begin{frame}{Résumé}
+\begin{block}{Convergence $L^2$ de la série de Fourier}
+Si la fonction est développée sur un système de fonctions orthogonal et complet, alors sa série de Fourier converge en norme $L^2$ vers $f$.
+\end{block}
+\begin{block}{Convergence simple vers la régularisée}
+Si la fonction et sa dérivée sont continues par morceaux, alors sa série de Fourier converge simplement vers la régularisée sur l'intervalle. On peut prolonger sur $\mathbb{R}$ à la convergence vers le prolongement périodique de la régularisée de la fonction
+\end{block}
+\begin{block}{Convergence uniforme vers la fonction}
+Si les hypothèses de Dirichlet sont validées, que la fonction est continue et donc égale à sa régularisée, alors la somme de la série de Fourier est égale à $f$.
+\end{block}
+\end{frame}
+\end{document}

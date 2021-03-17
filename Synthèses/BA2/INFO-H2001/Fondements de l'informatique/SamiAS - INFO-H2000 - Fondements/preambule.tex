@@ -1,0 +1,82 @@
+%% Packages élémentaires %%
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo,etoolbox, graphicx, wrapfig, pbox, fancybox, hyperref, appendix, geometry, amsmath, amssymb, tikz, pgfplots, calc, enumitem}
+\graphicspath{{images/}}
+\geometry{hmargin=2.4cm, vmargin = 2.1cm}
+\setlist[itemize]{itemsep=10pt, label={--}}
+
+%% Couleurs %%
+\usepackage{xcolor}
+\definecolor{bleu}{RGB}{14, 68, 175}
+\definecolor{bleu3}{RGB}{222, 233, 255 }
+\definecolor{orange2}{RGB}{255, 216, 154}
+\definecolor{rouge}{RGB}{201, 0, 0}
+\definecolor{vert}{RGB}{14, 137, 0}
+\definecolor{gris}{RGB}{222,230,230}
+\newcommand\rouge[1] {{\color{rouge}{#1}}}
+\newcommand\bleu[1] {{\color{bleu}{#1}}}
+\newcommand\green[1]{{\color{vert}{#1}}}
+
+
+%% Cadres %%
+\newcommand\bb[1]{
+\begin{center}
+\fcolorbox{black}{bleu3}{\parbox{\textwidth}{ 
+#1
+}}
+\end{center}}
+
+\newcommand\boite[1]{
+\begin{center}
+\fbox{\parbox{\textwidth}{ \begin{center}
+\begin{Large}
+#1
+\end{Large}
+\end{center}}}
+\end{center}}
+
+\newcommand\aparte[1]{
+\begin{center}
+\fcolorbox{white}{gris}{\parbox{\linewidth}{ \textit{A parte} \\
+#1 }}
+\end{center}}
+
+\newcommand\exemple[1]{
+\begin{center}
+\fcolorbox{white}{gris}{\parbox{\linewidth}{ \textit{Exemple} \\
+#1 }}
+\end{center}}
+
+%% Commandes %%
+\newcommand\imp[1]{\underline{\textbf{#1}}}
+\newcommand\eq[1]{\begin{large}
+\begin{align*}
+#1
+\end{align*}
+\end{large}}
+%% Commandes fantaisistes (cf. Internet) %%
+\renewcommand{\parallel}{ \mathbin{\!/\mkern-5mu/\!} }
+\newcommand{\q}[1]{{%
+\font\larm = larm1000%
+\larm%
+\char 190}{ \textit{#1} }{%
+\font\larm = larm1000%
+\larm%
+\char 191}}
+
+%% Wrapping %%
+\newcommand\wrap[4]{\begin{wrapfigure}[#1]{#2}{#3\textwidth}
+#4
+\end{wrapfigure}}
+\usepackage{titling, setspace, anyfontsize}
+
+\newcommand\documentname[3]{\title{
+    \includegraphics[width=1\textwidth]{#3} \\
+    \vspace{0.7cm}
+     #1\\
+    \vspace{0.6cm}
+    \LARGE École Polytechnique de Bruxelles\\ 
+    \vspace{0.7cm}
+    \large #2
+    \vspace{0.8cm}
+}}

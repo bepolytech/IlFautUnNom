@@ -1,0 +1,117 @@
+\documentclass[10pt]{beamer}
+\usetheme{Boadilla}
+
+\usecolortheme{whale}
+\usecolortheme{orchid}
+
+\input{preambule-beamer.tex}
+\newcommand\clsep {CL_\text{sep} }
+\author{Sami AS}
+\title{Résumé Analyse II chapitre 16}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{CL séparées et Théorème de l'Alternative}
+\begin{frame}{CL séparées}
+\begin{center}
+$\left\{ \begin{array}{l}
+(\text{EDL\bleu{H}}) \qquad L(y) := a_0 y'' + a_1 y' + a_2 = \bleu{0} \\
+(\text{CL\green{H}}) \qquad \left\{\begin{array}{l}
+(CL_a) \quad cl_a(y) := \alpha_1 y(a) + \alpha_2 y'(a) = \green{0} \\
+(CL_b) \quad cl_b(y) := \beta_1 y(b) + \beta_2 y'(b) = \green{0} 
+\end{array}\right.
+\end{array} \right.$
+\end{center}
+\begin{itemize}
+\item Conditions aux limites séparées = paire de combilis.
+\item On considère les coefficients des combili \textbf{non-nuls}, donc si les $ \clsep$ sont \textbf{homogènes}, alors on a des choses sucrées.
+\begin{itemize}
+\item Soient $y_1$ et $y_2$ deux \rouge{fonctions qui satisfont à $(CL_a)$} ($\in \mathit{Cl}_a$) $$ \Rightarrow \left\{ \begin{array}{l} 
+cl_a(y_1) = 0 \\
+cl_a(y_2) = 0 
+\end{array}\right.\qquad \Rightarrow W(y_1, y_2)_{\vert_a} = 0$$
+\end{itemize} 
+\item[$\Rightarrow$] Grosse propriété donc : le Wronskien de deux fonctions satisfaisant une des CL de $\clsep$ \textbf{est nul}.
+\item Plus concrètement, pour une $\clsep$, on a  $$W(y_1, y_2)_{\vert_a} =  W(y_1, y_2)_{\vert_b} = 0 $$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Théorème de l'Alternative}
+\begin{alertblock}{Théorème de l'Alternative}
+\begin{center}
+$(\text{P\bleu{H}}) \quad \left\{ \begin{array}{l}
+L(y) = \bleu{0} \\
+cl_1(y) = 0  \\
+ \qquad\vdots \\
+cl_n(y) = 0
+\end{array}\right. \qquad 
+(\text{P\green{nH}}) \quad \left\{ \begin{array}{l}
+L(y) = \green{f} \\
+cl_1(y) = d_1  \\
+ \qquad\vdots \\
+cl_n(y) = d_2
+\end{array}\right.$
+\end{center}
+
+\begin{itemize}
+\item Le PnH admet une et une seule solution $\iff$ le PH n'a que la solution triviale $\iff det(M_{\mathit{Cl}}) \neq 0 $.
+\item Si le PH admet une autre solution que la solution triviale, alors soit le PnH a une infinité de solutions, soit aucune.
+\end{itemize} 
+\end{alertblock}
+Avec $M_{\mathit{Cl}} = \begin{pmatrix}
+\mathit{Cl}_1(y_1) & \cdots & \mathit{Cl}_1 (y_n) \\
+\vdots & \ddots & \vdots \\
+\mathit{Cl}_n(y_1) & \cdots & \mathit{Cl}_n (y_n) 
+\end{pmatrix}$
+\end{frame}
+\section{Identité de Green et opérateur réduit, autoadjoint}
+\begin{frame}{Opérateur réduit et identité de Green}
+\begin{block}{Opérateur différentiel réduit}
+Un opérateur réduit est un opérateur qui s'écrit sous la forme $$L:= -DpD + q$$
+et tout opérateur différentiel $P(D) = PD^2 + QD + R$ peut s'écrire sous une forme réduite avec $$ p = e^{\int \frac{Q}{P}}, \qquad q = -\frac{R}{P} e^{\int \frac{Q}{P}}.$$
+\end{block}
+
+\begin{block}{Identité de Green}
+L'identité de Green stipule que pour un opérateur \textbf{réduit} $L$, on a
+$$\forall \rouge{x} \in [a,b] : \int^{\rouge{x}} _{\color{black}{a}}   (L(u)v - uL(v)) = \left[pW(u,v)\right] ^{\rouge{x}} _{\color{black}{a}}  $$
+Utile si $u,v$ satisfont à des $\clsep$ !
+\end{block}
+\end{frame}
+\begin{frame}{Opérateur autoadjoint}
+\underline{Définition} : $ F \text{ est autoadjoint dans $CL$} \iff  \forall u,v \in CL : \langle Fu, v \rangle = \langle u, Fv \rangle $
+\begin{block}{Opérateur différentiel réduit autoadjoint}
+Si l'on restreint $L$ réduit à la classe de fonctions $Cl$, alors l'opérateur $L$ est \textbf{autoadjoint}. C'est dû à la remarque en bas du slide précédent : le Wronskien deux fonctions satisfaisant une Cl est nul, et donc le crochet de l'identité de Green est nul !
+$$\boxed{\mathcal{L} \equiv L_{CL_{[a,b]}} \text{autoadj : } \quad \forall u,v : \int_a ^b L(u)v = \int_a ^b uL(v)} $$
+\end{block}
+\end{frame}
+\section{Problème de Sturm-Liouville}
+\begin{frame}{Problème de Sturm-Liouville}
+\begin{alertblock}{Énoncé d'un problème de Sturm-Liouville}
+Le problème de \textbf{Sturm-Liouville} consiste à rechercher les solutions \textbf{non-triviales} $(\lambda ,y)$ de 
+$$\left\{ \begin{array}{l}
+L(y) = \lambda y \\
+cl_a(y) = 0 \\
+cl_b(y) = 0
+\end{array} \right.$$
+
+\end{alertblock}
+\begin{block}{Propriétés d'un problème de Sturm-Liouville}
+\begin{enumerate}
+\item Les \textbf{valeurs propres} sont réelles, simples et admettent chacune une \textbf{fonction propre} réelle
+\item Les fonctions propres associées à des valeurs propres différentes sont orthogonales.
+\item Les $\lambda_k$ forment une suite croissante vers $+\infty$
+\item $(y_n)_{n\in\mathbb{N}_0}$ est un système orthogonal complet dans $CL$
+\end{enumerate}
+
+\end{block}
+\end{frame}
+
+\end{document}

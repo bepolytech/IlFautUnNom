@@ -1,0 +1,122 @@
+
+
+%% Packages élémentaires %%
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+% Police
+\usepackage{mathpazo}
+
+%
+\usepackage{etoolbox}
+
+% Images, mise en page
+\usepackage{graphicx, wrapfig, pbox, fancybox, hyperref, appendix, longtable, geometry}
+\graphicspath{{images/}}
+\geometry{hmargin=2.4cm, vmargin = 2.1cm}
+
+% Maths
+\usepackage{amsmath}
+\usepackage{wasysym}
+
+% Enumérations
+\usepackage{calc}  
+\usepackage{enumitem}
+
+%% Couleurs %%
+\usepackage[dvipsnames]{xcolor}
+\definecolor{bleu}{RGB}{14, 68, 175}
+\definecolor{bleu3}{RGB}{222, 233, 255 }
+\definecolor{orange2}{RGB}{255, 216, 154}
+\definecolor{rouge}{RGB}{201, 0, 0}
+\definecolor{vert}{RGB}{14, 137, 0}
+\newcommand\rouge[1] {{\color{rouge}{#1}}}
+\newcommand\bleu[1] {{\color{bleu}{#1}}}
+\newcommand\green[1]{{\color{vert}{#1}}}
+
+%% Cadres %%
+\newcommand\bb[1]{
+\begin{center}
+\fcolorbox{black}{bleu3}{\parbox{\textwidth}{ \begin{center}
+\begin{Large}
+#1
+\end{Large}
+\end{center}}}
+\end{center}}
+
+\newcommand\bo[1]{
+\begin{center}
+\fcolorbox{black}{orange2}{\parbox{\textwidth}{ \begin{center}
+\begin{Large}
+#1
+\end{Large}
+\end{center}}}
+\end{center}}
+
+\newcommand\boite[1]{
+\begin{center}
+\fbox{\parbox{\textwidth}{ \begin{center}
+\begin{Large}
+#1
+\end{Large}
+\end{center}}}
+\end{center}}
+
+%% Commandes %%
+\newcommand\imp[1]{\underline{\textbf{#1}}}
+\newcommand\eq[1]{\begin{Large}
+\begin{align*}#1\end{align*}\end{Large}}
+\newcommand\equ[2]{\begin{Large}
+\begin{equation} \label{#1}#2\end{equation}\end{Large}}
+\newcommand\bfr[3]{\begin{wrapfigure}{r}{#1\textwidth}
+\centering
+\includegraphics[scale=#2]{#3}
+\end{wrapfigure}}
+\newcommand \maxwelln{
+\begin{eqnarray*}
+\oint_S \vec{E}\cdot d\vec{S} &=& \dfrac{Q}{\varepsilon_0} \\
+\oint_C \vec{E} \cdot d\vec{l} &= &-\dfrac{d}{dt} \int_S \vec{B} \cdot d\vec{S} \\
+\oint_S \vec{B}\cdot d\vec{S} &= &0 \\
+\oint_C \vec{B} \cdot d\vec{l} &=& \mu_0 I + \varepsilon_0  \mu_0 \dfrac{d}{dt} \int_S \vec{E} \cdot d\vec{S}
+\end{eqnarray*}}
+\newcommand \maxwell{
+\begin{eqnarray}
+\oint_S \vec{E}\cdot d\vec{S} &=& \dfrac{Q}{\varepsilon_0} \\
+\oint_C \vec{E} \cdot d\vec{l} &= &-\dfrac{d}{dt} \int_S \vec{B} \cdot d\vec{S} \\
+\oint_S \vec{B}\cdot d\vec{S} &= &0 \\
+\oint_C \vec{B} \cdot d\vec{l} &=& \mu_0 I + \varepsilon_0 \mu_0 \dfrac{d}{dt} \int_S \vec{E} \cdot d\vec{S}
+\end{eqnarray}}
+\newcommand \maxwellvide{
+\begin{eqnarray*}
+\oint_S \vec{E}\cdot d\vec{S} &=& \dfrac{Q}{\varepsilon_0} \\
+\oint_C \vec{E} \cdot d\vec{l} &= &0 \\
+\oint_S \vec{B}\cdot d\vec{S} &= &0 \\
+\oint_C \vec{B} \cdot d\vec{l} &=& \mu_0 I 
+\end{eqnarray*}}
+
+\newcommand\bfe[3]{\begin{wrapfigure}[#1]{r}{#2\textwidth}
+\centering
+#3
+\end{wrapfigure}}
+
+\newcommand\wraparray[3]{\begin{wrapfigure}[#1]{r}{#2\textwidth}
+\centering
+\vspace{-1cm}
+\begin{eqnarray*}
+#3
+\end{eqnarray*}
+\end{wrapfigure}}
+\newcommand\Rn{\mathbb{R}^n}
+\renewcommand\div[1]{\text{div}#1}
+\newcommand\rot[1]{\overrightarrow{\text{rot}} #1}
+\newcommand\grad[1]{\overrightarrow{\text{grad}} #1}
+
+%% Commandes fantaisistes (cf. Internet) %%
+\renewcommand{\parallel}{ \mathbin{\!/\mkern-5mu/\!} }
+\newcommand{\q}[1]{{%
+\font\larm = larm1000%
+\larm%
+\char 190}{\textit{ #1 }}{%
+\font\larm = larm1000%
+\larm%
+\char 191}}
